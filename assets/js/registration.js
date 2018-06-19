@@ -11,7 +11,6 @@ function check(obj)
 		ele.value="Invalid";
 		ele.style.borderColor="red";
 		checktt(obj);
-		
 	}
 	else
 	{
@@ -88,24 +87,24 @@ function checktt(obj)
 
  } 
  
- function vpassword()
+ function vpassword(obj)
  {
-	  var pass=document.getElementById('pass').value;
+	  var pass=document.getElementById(obj.id).value;
 	 if(pass.length<8)
 	 {
-				document.getElementById('pass').style.borderColor="red";
+				document.getElementById(obj.id).style.borderColor="red";
 				checktt(obj);
 
 	 }
 	 else
 	 {
 
-	 document.getElementById('pass').style.borderColor="green";
-	document.getElementById('pass').style.borderWidths="5px";
+	 document.getElementById(obj.id).style.borderColor="green";
+	document.getElementById(obj.id).style.borderWidths="5px";
 	checktt(obj);
 	 }		
  }
- function repassword()
+ function repassword(obj)
  {
 	  var pass=document.getElementById('pass').value;
 	  var passw=document.getElementById('passw').value;
@@ -123,9 +122,9 @@ function checktt(obj)
 	 }
  }
  
- function valid(id)
+ function valid(obj)
  {
-    var ele=document.getElementById(id);
+    var ele=document.getElementById(obj.id);
 	var n=ele.value;
 	var reg=/^([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+)$/;
 	
@@ -142,9 +141,9 @@ function checktt(obj)
 	checktt(obj);
 	}
  }
-function zipcode(id)
+function zipcode(obj)
 {
-	var ele=document.getElementById(id);
+	var ele=document.getElementById(obj.id);
 	var n=ele.value;
 	var reg=/^[0-9\-]*[0-9]*$/;
 	if(n == "" || reg.test(n)!=true)
@@ -160,9 +159,9 @@ function zipcode(id)
 		checktt(obj);
 	}
 }
-function checkadd(id)
+function checkadd(obj)
 {
-	var ele=document.getElementById(id);
+	var ele=document.getElementById(obj.id);
 	var n=ele.value;
 	if(n == "")
 	{	
