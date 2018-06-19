@@ -39,8 +39,8 @@ function checktt(obj)
 }
 
 
- function validate() {
-	 var email=document.getElementById('email');
+ function validate(obj) {
+	 var email=document.getElementById(obj.id);
 	 var val=email.value;
 
             var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
@@ -48,15 +48,17 @@ function checktt(obj)
             {
 				email.value="It is invalid";
 				email.style.borderColor="red";
+				checktt(obj);
             }
 			else{
 							email.style.borderColor="green";
 							email.style.borderWidths="5px";
+							checktt(obj);
 				}
  }
- function phnvalidate(id)
+ function phnvalidate(obj)
  {
-	 var ele=document.getElementById(id);
+	 var ele=document.getElementById(obj.id);
 	var n=ele.value;
 	var reg=/(\d)\1{9}/;
 	
@@ -65,12 +67,14 @@ function checktt(obj)
 		
 		ele.value.text="Invalid";
 		ele.style.borderColor="red";
+		checktt(obj);
 	
 	}
 	else
 	{
 	ele.style.borderColor="green";
 	ele.style.borderWidths="5px";
+	checktt(obj);
 	}	
  }
  function dobvalidate()
@@ -90,6 +94,7 @@ function checktt(obj)
 	 if(pass.length<8)
 	 {
 				document.getElementById('pass').style.borderColor="red";
+				checktt(obj);
 
 	 }
 	 else
@@ -97,6 +102,7 @@ function checktt(obj)
 
 	 document.getElementById('pass').style.borderColor="green";
 	document.getElementById('pass').style.borderWidths="5px";
+	checktt(obj);
 	 }		
  }
  function repassword()
@@ -107,11 +113,13 @@ function checktt(obj)
 	 {
 				
 				document.getElementById('passw').style.borderColor="red";
+				checktt(obj);
 	 }
 	 else
 	 {
 	 document.getElementById('passw').style.borderColor="green";
 	document.getElementById('passw').style.borderWidths="5px";
+	checktt(obj);
 	 }
  }
  
@@ -125,11 +133,13 @@ function checktt(obj)
 	{	
 		ele.value="Invalid";
 		ele.style.borderColor="red";
+		checktt(obj);
 	}
 	else
 	{
 	ele.style.borderColor="green";
 	ele.style.borderWidths="5px";
+	checktt(obj);
 	}
  }
 function zipcode(id)
@@ -141,11 +151,13 @@ function zipcode(id)
 	{	
 		ele.value="Invalid";
 		ele.style.borderColor="red";
+		checktt(obj);
 	}
 	else
 	{
 		ele.style.borderColor="green";
 		ele.style.borderWidths="5px";
+		checktt(obj);
 	}
 }
 function checkadd(id)
@@ -156,11 +168,13 @@ function checkadd(id)
 	{	
 		ele.value="Invalid";
 		ele.style.borderColor="red";
+		checktt(obj);
 	}
 	else
 	{
 		ele.style.borderColor="green";
 		ele.style.borderWidths="5px";
+		checktt(obj);
 	}
 }
  function myFunction() {
