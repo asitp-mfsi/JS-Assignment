@@ -15,6 +15,7 @@ function check(obj)
 	else
 	{
 	ele.style.borderColor="green";
+	ele.style.backgroundColor="lighyellow";
 	ele.style.borderWidths="5px";
 	checktt(obj);
 	}	
@@ -31,9 +32,6 @@ function checktt(obj)
 			
 			document.getElementById(nxtid).style.visibility='hidden';
 		}
-		else
-			
-			document.getElementById(nxtid).style.visibility='visible';
 	}
 }
 

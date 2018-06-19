@@ -10,6 +10,9 @@ font-family:Electrolize,Electrolize-Regular,Electrolize Regular;
 border:10px solid white;
 
 }
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px white inset;
+}
 @-webkit-keyframes AnimationName {
     0%{background-position:0% 63%}
     50%{background-position:100% 38%}
