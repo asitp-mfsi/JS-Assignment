@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Registration</title>
+	<link rel="stylesheet" href="assets/css/registration.css">
+	<link href="https://fonts.googleapis.com/css?family=Electrolize" rel="stylesheet">
+</head>
+
+<body class="outdoor" onload="captcha()">
+
+<br>
+<br>
+
+<form id="regform" onsubmit="return validateForm()" autocomplete="on" >
+<table>
+<caption style="font-size:50px;color:black;text-shadow: 2px 2px white;">Register your Details<hr></caption>
+<div>
+<tr>
+<td><label id="fname1" ><strong>First Name :</strong></label></td>
+<td><div class="tooltip"><input  id="fname" type="text" name="fname" onClick="this.select();" placeholder="First Name" style="size:50;font-size:25px;color:black" onblur="check(this)" >
+<span id="s0" class="tooltiptext">It can't be empty and spaces not allowed.</span></div></td>
+</tr>
+</div>
+<div>
+<tr>
+<td><label id="mname1" ><strong>Middle Name :</strong></label></td>
+<td><div class="tooltip"><input id="mname" type="text" name="mname" onClick="this.select();" placeholder="Middle Name" style="size:50;font-size:25px;" onblur="check(this.id)"  onkeypress="checktt(this)" >
+<span id="s1" class="tooltiptext">It can't be empty and spaces not allowed.</span></div></td>
+</tr>
+</div>
+<tr>
+<td><label id="lname1" ><strong>Last Name :</strong></label></td>
+<td><div class="tooltip"><input id="lname" type="text" name="lname" onClick="this.select();" placeholder="Last Name"  style="size:50;font-size:25px;" onblur="check(this.id)" onkeypress="checktt(this)">
+<span id="s2" class="tooltiptext">It can't be empty and spaces not allowed.</span></div></td>
+</tr>
+
+<tr>
+<td><label id="email1"><strong>Email ID :</strong></label></td>
+<td><div class="tooltip"><div class="tooltip"><input id="email" type="text" onClick="this.select();" name="email" placeholder="Email ID"   style='size:50;font-size:25px;color:black' style="size:50;font-size:25px;" onblur="validate()" onkeypress="checktt(this)" >
+<span id="s3" class="tooltiptext">It should be a valid email id.</span></div></td>
+</tr>
+<tr>
+<td><label id="lphone1"><strong>Mobile :</strong></label></td>
+<td><div class="tooltip"><input id="lphone" type="number" name="lphone" onClick="this.select();" placeholder="Phone Number"  style="size:50;font-size:25px;" onblur="phnvalidate(this.id)" onkeypress="checktt(this)">
+<span id="s4" class="tooltiptext">It can't be empty and it should be a 10 digit number.</span></div></td>
+</tr>
+<tr>
+<td><label id="mphone1"><strong>Mobile (Alternate)*optional :</strong></label></td>
+<td><div class="tooltip"><input id="mphone" type="number" name="mphone" placeholder="Phone Number" onClick="this.select();"  style="size:50;font-size:25px;" onblur="phnvalidate(this.id)" onkeypress="checktt(this)">
+<span id="s5" class="tooltiptext">It should be a 10 digit number.</span></div></td>
+</tr>
+
+<tr>
+<td><label id="dob1"><strong>DOB :</strong></label></td>
+<td><input id="dob" type="date" name="dob" placeholder="Date Of Birth" style="size:50;font-size:25px;" onblur="dobvalidate()"></td>
+</tr>
+<tr>
+<td><label style="font-size:25px;"><strong>Gender :</strong></label></td>
+	<td> <input  type="radio" name="gender" value="male"> <span style="color:black">Male</span><br>
+		 <input  type="radio" name="gender" value="female"><span style="color:black"> Female </span><br>
+		 <input  type="radio" name="gender" value="other"><span style="color:black"> Other </span> </td>
+		 </tr>
+		
+<tr>
+<td><label id="pass1"><strong>Password :</strong></label></td>
+<td><div class="tooltip"><input id="pass" type="password" name="password" onClick="this.select();" placeholder="Password"  style="size:50;font-size:25px;" onblur="vpassword()" onkeypress="checktt(this)">
+<span id="s6" class="tooltiptext">It should be more than 8 characters.</span></div></td>
+<td><input type="checkbox" onclick="myFunction()" </td>
+</tr>
+
+ <tr>
+<td><label id="pass2"><strong>Re-enter Password :</strong></label></td>
+<td><div class="tooltip"><input id="passw" type="password" name="password" onClick="this.select();" placeholder="Password"  style="size:50;font-size:25px;" onblur="repassword()" onkeypress="checktt(this)" >
+<span id="s7" class="tooltiptext">It should be same as the entered password</span></div></td>
+</tr>
+
+<tr>
+<th><label style="font-size:25px;width:100%;"><strong>Present Address :</strong></label></th>
+</tr>
+
+<tr>
+<td><label style="font-size:25px;"><strong>Line No 1 :</strong></label></td>
+<td><div class="tooltip"><input id="lineno" type="text" name="lineno1" placeholder="" onClick="this.select();"  style="size:20;font-size:25px;" onblur="checkadd(id)" onkeypress="checktt(this)">
+<span id="s8" class="tooltiptext">It can't be empty.</span></div></td>
+
+</tr>
+<tr>
+<td><label style="font-size:25px;"><strong>Line No 2 :</strong></label></td>
+<td><input id="input" type="text" name="lineno2" placeholder="" style="size:20;font-size:25px;"></td>
+</tr>
+
+<tr>
+<td><label id="city1"><strong>City :</strong></label></td>
+<td><div class="tooltip"><input id="city" type="text" name="city" placeholder="City" onClick="this.select();"  style="size:20;font-size:25px;" onblur="valid(this.id)" onkeypress="checktt(this)">
+<span id="s9" class="tooltiptext">It can't be empty.</span></div> </td>
+</tr>
+
+<tr>
+<td><label id="state1"><strong>State :</strong></label></td>
+<td><div class="tooltip"><input id="state" type="text" name="state" placeholder="State" onClick="this.select();"  style="size:20;font-size:25px;" onblur="valid(this.id)" onkeypress="checktt(this)"> 
+<span id="s10" class="tooltiptext">It can't be empty.</span></div></td>
+</tr>
+
+<tr>
+<td><label id="country1"><strong>Country :</strong></label></td>
+<td><div class="tooltip"><input id="country" type="text" name="country" placeholder="Country" onClick="this.select();"  style="size:20;font-size:25px;" onblur="valid(this.id)" onkeypress="checktt(this)">
+<span id="s11" class="tooltiptext">It can't be empty.</span></div> </td>
+</tr>
+
+<tr>
+<td><label style="font-size:25px;"><strong>Zip Code :</strong></label></td>
+<td><div class="tooltip"><input id="zip" type="text" name="zip" placeholder="Zip Code" onClick="this.select();"  style="size:20;font-size:25px;" onblur="zipcode(this.id)" onkeypress="checktt(this)">
+<span id="s12" class="tooltiptext">It can't be empty.</span></div></td>
+</tr>
+</div>
+
+</table>
+
+<br>
+<br>
+
+<div id="captcha1">
+<p style="text-align:center">captcha</p>
+<table>
+<tr>
+<td><p  id="captcha" style="text-align:center;border:5px solid black;padding:10px;font-size:35px;background-color:white" >asitp</p></td>
+<td><image src="assets/images/reload.png" onclick="captcha()" width="20px" height="20px"></image></tr></td></table>
+<br>
+<input type="number" id="ans" name="ans" align="center" style="text-align:center" ></input>
+</div>
+
+
+<input id="btn" type="submit" value="Submit" style="height:50px;width:100px;text-align:center;display:block;margin-left:auto;margin-right:auto;" onclick="validCaptcha()">
+</form>
+
+
+<br>
+
+<footer>
+
+<p>copyright &copy All Rights Reserved</p>
+
+</footer>
+</div>
+<script src="assets/js/registration.js"></script>
+</body>
+
+
+</html>
