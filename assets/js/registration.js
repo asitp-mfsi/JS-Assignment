@@ -10,7 +10,7 @@ function check(obj)
 		
 		ele.value="Invalid";
 		ele.style.borderColor="red";
-		checktt(obj);
+
 	}
 	else
 	{
@@ -47,7 +47,6 @@ function checktt(obj)
             {
 				email.value="It is invalid";
 				email.style.borderColor="red";
-				checktt(obj);
             }
 			else{
 							email.style.borderColor="green";
@@ -66,7 +65,6 @@ function checktt(obj)
 		
 		ele.value.text="Invalid";
 		ele.style.borderColor="red";
-		checktt(obj);
 	
 	}
 	else
@@ -93,7 +91,7 @@ function checktt(obj)
 	 if(pass.length<8)
 	 {
 				document.getElementById(obj.id).style.borderColor="red";
-				checktt(obj);
+
 
 	 }
 	 else
@@ -112,7 +110,7 @@ function checktt(obj)
 	 {
 				
 				document.getElementById('passw').style.borderColor="red";
-				checktt(obj);
+
 	 }
 	 else
 	 {
@@ -132,7 +130,7 @@ function checktt(obj)
 	{	
 		ele.value="Invalid";
 		ele.style.borderColor="red";
-		checktt(obj);
+
 	}
 	else
 	{
@@ -150,7 +148,7 @@ function zipcode(obj)
 	{	
 		ele.value="Invalid";
 		ele.style.borderColor="red";
-		checktt(obj);
+
 	}
 	else
 	{
@@ -167,7 +165,7 @@ function checkadd(obj)
 	{	
 		ele.value="Invalid";
 		ele.style.borderColor="red";
-		checktt(obj);
+
 	}
 	else
 	{
