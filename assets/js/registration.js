@@ -10,7 +10,7 @@ function check(obj)
 		
 		ele.value="Invalid";
 		ele.style.borderColor="red";
-
+		checktt(obj);
 	}
 	else
 	{
@@ -56,7 +56,7 @@ function checktt(obj)
  }
  function phnvalidate(obj)
  {
-	 var ele=document.getElementById(obj.id);
+	var ele=document.getElementById(obj.id);
 	var n=ele.value;
 	var reg=/(\d)\1{9}/;
 	
@@ -69,9 +69,9 @@ function checktt(obj)
 	}
 	else
 	{
-	ele.style.borderColor="green";
-	ele.style.borderWidths="5px";
-	checktt(obj);
+		ele.style.borderColor="green";
+		ele.style.borderWidths="5px";
+		checktt(obj);
 	}	
  }
  function dobvalidate()
@@ -91,15 +91,12 @@ function checktt(obj)
 	 if(pass.length<8)
 	 {
 				document.getElementById(obj.id).style.borderColor="red";
-
-
 	 }
 	 else
-	 {
-
-	 document.getElementById(obj.id).style.borderColor="green";
-	document.getElementById(obj.id).style.borderWidths="5px";
-	checktt(obj);
+	 {	
+		document.getElementById(obj.id).style.borderColor="green";
+		document.getElementById(obj.id).style.borderWidths="5px";
+		checktt(obj);
 	 }		
  }
  function repassword(obj)
@@ -114,9 +111,9 @@ function checktt(obj)
 	 }
 	 else
 	 {
-	 document.getElementById('passw').style.borderColor="green";
-	document.getElementById('passw').style.borderWidths="5px";
-	checktt(obj);
+		document.getElementById('passw').style.borderColor="green";
+		document.getElementById('passw').style.borderWidths="5px";
+		checktt(obj);
 	 }
  }
  
@@ -134,9 +131,9 @@ function checktt(obj)
 	}
 	else
 	{
-	ele.style.borderColor="green";
-	ele.style.borderWidths="5px";
-	checktt(obj);
+		ele.style.borderColor="green";
+		ele.style.borderWidths="5px";
+		checktt(obj);
 	}
  }
 function zipcode(obj)
