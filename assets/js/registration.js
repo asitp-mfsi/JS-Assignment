@@ -25,6 +25,7 @@ function checktt(obj)
 {
 	var ele=document.getElementById(obj.id);
 	var nxtid=document.getElementById(obj.id).nextSibling.nextElementSibling.id;
+	console.log(nxtid);
 	if(ele.value!='')
 	{
 		if(ele.value!='Invalid')
@@ -169,8 +170,8 @@ function checkadd(obj)
 		checktt(obj);
 	}
 }
- function myFunction() {
-    var x = document.getElementById("pass");
+ function myFunction(id) {
+    var x = document.getElementById(id);
     if (x.type === "password") {
         x.type = "text";
     } else {
@@ -216,8 +217,7 @@ function generate()
 	 else
 		 alert("Unsuccessful");
  }
- 
- 
+
  
  
  

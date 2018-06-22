@@ -64,15 +64,20 @@
 		
 <tr>
 <td><label id="pass1"><strong>Password :</strong></label></td>
-<td><div class="tooltip"><input id="pass" type="password" name="password" onClick="this.select();" placeholder="Password"  style="size:50;font-size:25px;" onblur="vpassword(this)">
-<span id="s6" class="tooltiptext">It should be more than 8 characters.</span></div></td>
-<td><input type="checkbox" onclick="myFunction()" </td>
+<td><div class="input_container">
+<div class="tooltip"><input id="pass" type="password" name="password" onClick="this.select();" placeholder="Password"  style="size:50;font-size:25px;" onkeypress="vpassword(this)" onblur="vpassword(this)">
+<span id="s6" class="tooltiptext">It should be more than 8 characters.</span></div>
+<image src="assets/images/eye.png" id="input_img" height="25px" width="30px" onclick="myFunction('pass')" title="show your password?"></div>
+</td>
 </tr>
 
  <tr>
 <td><label id="pass2"><strong>Re-enter Password :</strong></label></td>
-<td><div class="tooltip"><input id="passw" type="password" name="password" onClick="this.select();" placeholder="Password"  style="size:50;font-size:25px;" onblur="repassword(this)"  >
-<span id="s7" class="tooltiptext">It should be same as the entered password</span></div></td>
+<td><div class="input_container">
+<div class="tooltip"><input id="passw" type="password" name="password"   onClick="this.select();" placeholder="Password"  style="size:50;font-size:25px;" onkeypress="repassword(this)" onblur="repassword(this)"  >
+<span id="s7" class="tooltiptext">It should be same as the entered password</span></div>
+<image src="assets/images/eye.png" id="input_img" height="25px" width="30px" onclick="myFunction('passw')" title="show your password?"></div>
+</td>
 </tr>
 
 <tr>
