@@ -1,184 +1,232 @@
-var a,b,d,str;
+var a,
+b,
+d,
+str,
+checkOnSubmit=true;
 function check(obj)
 {
-	var ele=document.getElementById(obj.id);
-	var n=ele.value;
-	var reg=/^[A-Za-z]*$/;
-	
-	if(n == "" || reg.test(n)!=true)
-	{
-		
-		ele.value="Invalid";
-		ele.style.borderColor="red";
-		checktt(obj);
-	}
-	else
-	{
-	ele.style.borderColor="green";
-	ele.style.backgroundColor="lighyellow";
-	ele.style.borderWidths="5px";
-	checktt(obj);
-	}	
+ var ele=document.getElementById(obj);
+ var n=ele.value;
+ var reg=/^[A-Za-z]*$/;
+ 
+ if(n == "" || reg.test(n)!=true)
+{ 
+	var txt="It can't be empty and spaces not allowed.";
+  checkOnSubmit=false;
+  ele.style.borderColor="red";
+  checktt(obj,reg,txt);
 }
-
-function checktt(obj)
+ else
 {
-	var ele=document.getElementById(obj.id);
-	var nxtid=document.getElementById(obj.id).nextSibling.nextElementSibling.id;
-	console.log(nxtid);
-	if(ele.value!='')
-	{
-		if(ele.value!='Invalid')
-		{
-			
-			document.getElementById(nxtid).style.visibility='hidden';
-		}
-	}
+ ele.style.borderColor="green";
+ ele.style.backgroundColor="lighyellow";
+ ele.style.borderWidths="5px";
+ checktt(obj,reg,"");
+} 
 }
-
-
- function validate(obj) {
-	 var email=document.getElementById(obj.id);
-	 var val=email.value;
-
-            var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-            if (reg.test(val) == false) 
-            {
-				email.value="It is invalid";
-				email.style.borderColor="red";
-            }
-			else{
-							email.style.borderColor="green";
-							email.style.borderWidths="5px";
-							checktt(obj);
-				}
- }
- function phnvalidate(obj)
+function checktt(obj,reg,txt)
+{
+ var ele=document.getElementById(obj);
+ var nxtid=document.getElementById(obj).nextSibling.nextElementSibling.id;
+ if(ele.value!="")
+{
+  if(reg.test(ele.value)!=false)
  {
-	var ele=document.getElementById(obj.id);
-	var n=ele.value;
-	var reg=/(\d)\1{9}/;
-	
-	if(n == "" || reg.test(n)==true || n.length!=10)
-	{
-		
-		ele.value.text="Invalid";
-		ele.style.borderColor="red";
-	
-	}
-	else
-	{
-		ele.style.borderColor="green";
-		ele.style.borderWidths="5px";
-		checktt(obj);
-	}	
- }
- function dobvalidate()
- {
-	  var dob=document.getElementById('dob').value;
-	  var today=new Date();
-	  var day=Date.parse(dob);
    
-      if(today<=day)
-		  document.getElementById('dob').style.borderColor='red';
-
- } 
- 
- function vpassword(obj)
- {
-	  var pass=document.getElementById(obj.id).value;
-	 if(pass.length<8)
-	 {
-				document.getElementById(obj.id).style.borderColor="red";
-	 }
-	 else
-	 {	
-		document.getElementById(obj.id).style.borderColor="green";
-		document.getElementById(obj.id).style.borderWidths="5px";
-		checktt(obj);
-	 }		
+   document.getElementById(nxtid).innerHTML="&#10004 Correct Input";
  }
+ else
+ {
+	  document.getElementById(nxtid).innerHTML=txt;
+ }
+}
+else
+{
+	document.getElementById(nxtid).innerHTML=txt;
+}
+}
+function validate(obj){
+  var email=document.getElementById(obj);
+  var val=email.value;
+
+            var reg = /^([A-Za-z0-9])+([A-Za-z0-9\-\.])*\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+            if (reg.test(val) == false) 
+           {
+			   var txt="It should be a valid email id.";
+	checkOnSubmit=false;
+    email.style.borderColor="red";
+	checktt(obj,reg,txt);
+           }
+   else{
+       email.style.borderColor="green";
+       email.style.borderWidths="5px";
+       checktt(obj,reg,"&#10004 Correct Input");
+   }
+}
+ function phnvalidate(obj)
+{
+ var ele=document.getElementById(obj);
+ var n=ele.value;
+ var reg=/(\d)\1{9}/;
+ if(n == "" || reg.test(n)==true || n.length!=10)
+{
+	var txt="It should be a 10 digit number.";
+  checkOnSubmit=false;
+  ele.style.borderColor="red";
+  checktt(obj,reg,txt);
+}
+ else
+{
+  ele.style.borderColor="green";
+  ele.style.borderWidths="5px";
+  checktt(obj,reg,"&#10004 Correct Input");
+} 
+}
+function optional_Phnvalidate(obj)
+{
+ var ele=document.getElementById(obj);
+ var n=ele.value;
+ var reg=/(\d)\1{9}/;
+ if(n !== "")
+ {
+ 	 if( reg.test(n)==true || n.length!=10)
+{
+	var txt="It should be a 10 digit number.";
+  checkOnSubmit=false;
+  ele.style.borderColor="red";
+  checktt(obj,reg,txt);
+}
+ else
+{
+  ele.style.borderColor="green";
+  ele.style.borderWidths="5px";
+  checktt(obj,reg,"");
+} 
+ }
+}
+ function dobvalidate()
+{
+   var dob=document.getElementById("dob").value;
+   var nxtid=document.getElementById("dob").nextSibling.nextElementSibling.id;
+   var today=new Date();
+   var day=Date.parse(dob);
+if(today<=day || isNaN(day)){
+	var txt="Input correct date(It cannot be a future date)";
+    document.getElementById("dob").style.borderColor="red";
+	checkOnSubmit=false;
+	document.getElementById(nxtid).innerHTML=txt;
+}
+else
+{
+	document.getElementById(nxtid).innerHTML="&#10004 Correct Input";
+	document.getElementById("dob").style.borderColor="green";
+	document.getElementById("dob").style.borderWidths="5px";
+}
+}
+function vpassword(obj)
+{
+   var pass=document.getElementById(obj).value;
+   var nxtid=document.getElementById(obj).nextSibling.nextElementSibling.id;
+  if(pass.length<8)
+ {
+	 var txt="It should be more than 8 characters.";
+    document.getElementById(obj).style.borderColor="red";
+	checkOnSubmit=false;
+document.getElementById(nxtid).innerHTML=txt;
+ }
+  else
+ { 
+	document.getElementById(nxtid).innerHTML="&#10004 Correct Input";
+  document.getElementById(obj).style.borderColor="green";
+  document.getElementById(obj).style.borderWidths="5px";
+ }  
+}
  function repassword(obj)
+{
+   var pass=document.getElementById("pass").value;
+   var nxtid=document.getElementById(obj).nextSibling.nextElementSibling.id;
+   var passw=document.getElementById("passw").value;
+  if(pass!=passw || passw.length==0)
  {
-	  var pass=document.getElementById('pass').value;
-	  var passw=document.getElementById('passw').value;
-	 if(pass!=passw || passw.length==0)
-	 {
-				
-				document.getElementById('passw').style.borderColor="red";
-
-	 }
-	 else
-	 {
-		document.getElementById('passw').style.borderColor="green";
-		document.getElementById('passw').style.borderWidths="5px";
-		checktt(obj);
-	 }
+    var txt="Password not matching"
+    document.getElementById("passw").style.borderColor="red";
+	checkOnSubmit=false;
+	document.getElementById(nxtid).innerHTML=txt;
+}
+  else
+ {
+	 document.getElementById(nxtid).innerHTML="&#10004 Correct Input";
+  document.getElementById("passw").style.borderColor="green";
+  document.getElementById("passw").style.borderWidths="5px";
  }
+}
+function valid(obj)
+{
+	var txt="It can't be empty.";
+    var ele=document.getElementById(obj);
+ var n=ele.value;
+ var reg=/^([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+)$/;
  
- function valid(obj)
- {
-    var ele=document.getElementById(obj.id);
-	var n=ele.value;
-	var reg=/^([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+)$/;
-	
-	if(n == "" || reg.test(n)!=true)
-	{	
-		ele.value="Invalid";
-		ele.style.borderColor="red";
-
-	}
-	else
-	{
-		ele.style.borderColor="green";
-		ele.style.borderWidths="5px";
-		checktt(obj);
-	}
- }
+ if(n == "" || reg.test(n)!=true)
+{ 
+  ele.style.borderColor="red";
+  checkOnSubmit=false;
+   checktt(obj,reg,txt);
+}
+ else
+{
+  ele.style.borderColor="green";
+  ele.style.borderWidths="5px";
+  checktt(obj,reg,"");
+}
+}
 function zipcode(obj)
 {
-	var ele=document.getElementById(obj.id);
-	var n=ele.value;
-	var reg=/^[0-9\-]*[0-9]*$/;
-	if(n == "" || reg.test(n)!=true)
-	{	
-		ele.value="Invalid";
-		ele.style.borderColor="red";
-
-	}
-	else
-	{
-		ele.style.borderColor="green";
-		ele.style.borderWidths="5px";
-		checktt(obj);
-	}
+	var txt="It can't be empty.";
+ var ele=document.getElementById(obj);
+ var n=ele.value;
+ var reg=/^[0-9\-]*[0-9]*$/;
+ if(n == "" || reg.test(n)!=true)
+{ 
+  checkOnSubmit=false;
+  ele.style.borderColor="red";
+ checktt(obj,reg,txt);
+}
+ else
+{
+  ele.style.borderColor="green";
+  ele.style.borderWidths="5px";
+  checktt(obj,reg,"");
+}
 }
 function checkadd(obj)
 {
-	var ele=document.getElementById(obj.id);
-	var n=ele.value;
-	if(n == "")
-	{	
-		ele.value="Invalid";
-		ele.style.borderColor="red";
+	var txt="It can't be empty.";
+ var ele=document.getElementById(obj);
+ var reg=/^([A-Za-z0-9\s])*([A-Za-z0-9\s\_\-\,])$/;
+ var n=ele.value;
+ if(n == "" || reg.test(n)!=true)
+{ 
+  checkOnSubmit=false;
+  ele.style.borderColor="red";
+   checktt(obj,reg,txt);
 
-	}
-	else
-	{
-		ele.style.borderColor="green";
-		ele.style.borderWidths="5px";
-		checktt(obj);
-	}
 }
- function myFunction(id) {
+ else
+{
+  ele.style.borderColor="green";
+  ele.style.borderWidths="5px";
+  checktt(obj,reg,"");
+}
+}
+ function myFunction(id){
     var x = document.getElementById(id);
-    if (x.type === "password") {
+    if (x.type === "password"){
         x.type = "text";
-    } else {
+   } else{
         x.type = "password";
-    }
-}
- function captcha()
+   }
+}function captcha()
  {
 	
 	 		var c=0;
@@ -218,17 +266,94 @@ function generate()
 		 alert("Unsuccessful");
  }
 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+ function startTime(){
+    var today = new Date();
+    var h = today.getHours();
+	if(h<12)
+		document.getElementById('wishes').innerHTML="Good Morning User";
+	else if(h>=12 && h<=16)
+		document.getElementById('wishes').innerHTML="Good Afternoon User";
+	else if(h>=16)
+		document.getElementById('wishes').innerHTML="Good Evening User";
+    var m = today.getMinutes();
+    m = checkTime(m);
+    document.getElementById("clock").innerHTML =
+    h + ":" + m 
+    var t = setTimeout(startTime, 500);
+   var months = ["January", "February", "March", "April", "May", "June",
+   "July", "August", "September", "October", "November", "December"];
+    var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    var curWeekDay = days[today.getDay()];
+    var curDay = today.getDate();
+    var curMonth = months[today.getMonth()];
+    var curYear = today.getFullYear();
+    var date = curWeekDay+", "+curDay+" "+curMonth+" "+curYear;
+    document.getElementById("date").innerHTML = date;
+    
+    var time = setTimeout(function(){ startTime()}, 60000);
+}
+function checkTime(i){
+    if (i < 10){i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+
+function navigationFrame(mainFrame,nav)
+{
+	var ele=document.getElementById(mainFrame);
+	var nav=document.getElementById(nav);
+	if(nav.innerHTML==="Full Screen")
+	{
+		ele.style.width="90%";
+		ele.style.height="100%";
+		nav.innerHTML="Normal";
+		nav.style.position="absolute";
+		document.getElementById('wishes').style.position="absolute";
+		document.getElementById('wishes').style.width="200px";
+	}
+	else{
+		ele.style.width="80%";
+		ele.style.height="350px";
+		nav.innerHTML="Full Screen";
+		nav.style.position="fixed";
+		document.getElementById('wishes').style.position="fixed";
+	}
+}
+function validateGender()
+{
+	var male=document.getElementById('male');
+	var female=document.getElementById('female');
+	var other=document.getElementById('other');
+	if(male.checked==false && female.checked==false && other.checked==false)
+	{
+		var txt="Select gender";
+	checkOnSubmit=false;
+	document.getElementById('g1').innerHTML=txt;
+	}
+	else{
+		document.getElementById('g1').innerHTML="selected";
+	}
+}
+function validForm()
+{
+	check('fname');
+	check('mname');
+	check('lname');
+	validate('email');
+	phnvalidate('lphone');
+	optional_Phnvalidate('mphone');
+	dobvalidate('dob');
+	vpassword('pass');
+	repassword('passw');
+	checkadd('lineno');
+	valid('city');
+	valid('state');
+	valid('country');
+	zipcode('zip');
+	if(checkOnSubmit===false)
+	{
+		alert("Registration Incomplete!!");
+		return false;
+	}
+	else
+		validCaptcha();
+}

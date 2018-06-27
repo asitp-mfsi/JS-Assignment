@@ -1,40 +1,44 @@
 body{
-	background: linear-gradient(31deg, #3ee4b9, #e7e6f2, #f3cfb2, #b3b6e4);
-background-size: 800% 800%;
 
--webkit-animation: AnimationName 10s ease infinite;
--moz-animation: AnimationName 10s ease infinite;
-animation: AnimationName 30s ease infinite;
+background-image:url("../images/background(2).jpg");
+background-attachment:fixed;
+background-position:fixed;
+background-size:cover;
+
 font-family:Electrolize,Electrolize-Regular,Electrolize Regular;
+}
 
-border:10px solid white;
+.mainFrame
+{
 
+	 display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+	height:350px;
+	border:10px solid white;
+	overflow:auto;
+	padding:10px;
+	border-radius:50px 0px 0px 50px;
 }
-input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 30px white inset;
-}
-@-webkit-keyframes AnimationName {
-    0%{background-position:0% 63%}
-    50%{background-position:100% 38%}
-    100%{background-position:0% 63%}
-}
-@-moz-keyframes AnimationName {
-    0%{background-position:0% 63%}
-    50%{background-position:100% 38%}
-    100%{background-position:0% 63%}
-}
-@keyframes AnimationName { 
-    0%{background-position:0% 63%}
-    50%{background-position:100% 38%}
-    100%{background-position:0% 63%}
-}
-header
+
+#header
 {
 	 display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 100%;
 	
+}
+
+#nav{
+background:orange;
+border-radius:5px;
+color:black;
+}
+#nav:hover{
+background-color:grey;
+color:white;
 }
 #btn1
 {
@@ -45,18 +49,19 @@ header
 }
 #btn
 {
-	height:75px;
-	width:150px;
+	height:50px;
+	width:100px;
 	color:black;
 	font-size:25px;
 	background-color:orange;
-	margin-top:100px;
+	margin-top:10px;
 	display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
   position: relative;
   box-shadow: 2px 2px red;
+  border-radius:100px;
+	text-align:center;
 }
 
 #btn:hover
@@ -68,16 +73,12 @@ header
 footer
 {
 	text-align:center;
-	margin-bottom:5px;
-	margin-left:5px;
-	margin-right:5px;
-	border:2px solid black;
-	background-color:black;
+	margin-bottom:0;
+	float:right;
 	color:white;
 }
 #foot{
 	 position:fixed;
-    bottom: 10px;
 	width:100%;
 }
 #regform
@@ -94,18 +95,28 @@ table{
 	margin-left:auto;
 	margin-right:auto;
 	width:75%;
+		background-image:url("../images/background.jpg");
+	background-attachment:fixed;
+	background-position:fixed;
+	background-size:cover;
 }
  tr , td{
 	border:2px solid white;
 	padding:4px;
+}
+td:hover
+{
+	background-color:grey;
+	color:white;
 }
 #captcha1
 {
 	display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 25%;
+    width: 30%;
 }
+
 #ans
 {
 	display: block;
@@ -115,14 +126,20 @@ table{
 	height:30px;
 }
 
-
+input:-webkit-autofill {
+    -webkit-box-shadow: inset 0 0 0px 9999px white;
+}
 span{
 color:red;
 }
 label
 {
 	font-size:25px;	
+	
+	color:white;
+	text-shadow:3px 3px black;
 }
+
 .tooltip {
     position: relative;
     display: inline-block;
@@ -131,7 +148,7 @@ label
 
 .tooltip .tooltiptext {
     visibility: hidden;
-    width: 120px;
+    width: 180px;
     background-color: black;
     color: #fff;
     text-align: center;
@@ -146,14 +163,64 @@ label
 .tooltip:hover .tooltiptext {
     visibility: visible;
 }
-.input_container { 
-    position:relative;
-    padding:0;
-    margin:0;
-}
- #input_img {
-    position:absolute;
-    bottom:8px;
+
+.clockdate-wrapper {
+    background-color: #333;
+	margin-top:0px;
+    padding:5px;
+    max-width:350px;
+    width:50%;
+    text-align:center;
+    border-radius:5px;
+    margin:0 auto;
 	float:right;
 }
- 
+#clock{
+    background-color:#333;
+    font-family: sans-serif;
+    font-size:30px;
+    text-shadow:0px 0px 1px #fff;
+    color:#fff;
+}
+#clock span {
+    color:#888;
+    text-shadow:0px 0px 1px #333;
+    font-size:30px;
+    position:relative;
+    top:-27px;
+    left:-10px;
+}
+#date {
+    letter-spacing:10px;
+    font-size:14px;
+    font-family:arial,sans-serif;
+    color:#fff;
+}
+
+#wishes
+{
+	border:2px solid red;
+}
+#message{
+margin-left:72%;
+}
+
+
+
+::-webkit-input-placeholder {
+  color: black;
+  font-size: 25px;
+}
+::-moz-placeholder {
+  color: black;
+  font-size: 25px;
+}
+:-ms-input-placeholder {
+  color: black;
+  font-size: 25px;
+}
+::placeholder {
+  color: black;
+  font-size: 25px;
+  font-family:Electrolize,Electrolize-Regular,Electrolize Regular;
+}
