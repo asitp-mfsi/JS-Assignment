@@ -20,10 +20,7 @@ startTime() - start the time
 validForm() - validate the total form
 */
 
-var a,
-b,
-d,
-str,
+var str="",
 checkOnSubmit=true;
 function check(obj)
 {
@@ -252,9 +249,12 @@ function checkadd(obj)
  {
 	
 	 		var c=0;
+
 		while(c==0)
 		{
 			generate();
+			var a=parseInt(str[0]+str[1]);
+			var b=parseInt(str[3]+str[4]);
 			if(Number.isInteger(+(eval(str))) && a>=b && (a!=0 || b!=0))
 			{
 				document.getElementById("captcha").innerHTML=str;
@@ -267,10 +267,10 @@ function checkadd(obj)
 }
 function generate()
 {
-	a=rand();
+	var a=rand();
 	var possible="+-*/"
-	d=possible.charAt(Math.floor(Math.random() * 4));
-	b=rand();
+	var d=possible.charAt(Math.floor(Math.random() * 4));
+	var b=rand();
 	if(d=='*')
 	{
 		a=a-(a%10);
@@ -279,8 +279,7 @@ function generate()
 	str=a+d+b; 
 }
  function validCaptcha()
- 
- {
+  {
 	 var getans=document.getElementById("ans").value;
 	 if(eval(str) == getans)
 		 alert("Successful");
