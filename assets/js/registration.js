@@ -1,3 +1,25 @@
+/*
+function details
+check() - check validation of first name , middle name , last name
+checktt() - check state of tooltip and change it according to the validation
+validateEmail() - validate the email id
+phnvalidate() - validate the phone number
+optional_Phnvalidate() - validate the optional phone number
+dobvalidate() - validate the date of birth
+vpassword() - validate the password
+repassword() - validate if both the password are same or not
+validLocation() - validate the input city , state and country
+zipcode() - validate the zip code
+checkadd() - validate the line no
+convertPassword() - convert password to text
+captcha() - call generate() and check the captcha
+validCaptcha() - check the answer of the mathematical captcha
+generate() - generate captcha
+rand() - generate random number
+startTime() - start the time
+validForm() - validate the total form
+*/
+
 var a,
 b,
 d,
@@ -45,7 +67,7 @@ else
 	document.getElementById(nxtid).innerHTML=txt;
 }
 }
-function validate(obj){
+function validateEmail(obj){
   var email=document.getElementById(obj);
   var val=email.value;
 
@@ -160,7 +182,7 @@ document.getElementById(nxtid).innerHTML=txt;
   document.getElementById("passw").style.borderWidths="5px";
  }
 }
-function valid(obj)
+function validLocation(obj)
 {
 	var txt="It can't be empty.";
     var ele=document.getElementById(obj);
@@ -203,7 +225,7 @@ function checkadd(obj)
 {
 	var txt="It can't be empty.";
  var ele=document.getElementById(obj);
- var reg=/^([A-Za-z0-9\s])*([A-Za-z0-9\s\_\-\,])$/;
+ var reg=/^([A-Za-z0-9])*([A-Za-z0-9\s\_\-\,\/])*$/;
  var n=ele.value;
  if(n == "" || reg.test(n)!=true)
 { 
@@ -219,7 +241,7 @@ function checkadd(obj)
   checktt(obj,reg,"");
 }
 }
- function myFunction(id){
+ function convertPassword(id){
     var x = document.getElementById(id);
     if (x.type === "password"){
         x.type = "text";
@@ -338,16 +360,16 @@ function validForm()
 	check('fname');
 	check('mname');
 	check('lname');
-	validate('email');
+	validateEmail('email');
 	phnvalidate('lphone');
 	optional_Phnvalidate('mphone');
 	dobvalidate('dob');
 	vpassword('pass');
 	repassword('passw');
 	checkadd('lineno');
-	valid('city');
-	valid('state');
-	valid('country');
+	validLocation('city');
+	validLocation('state');
+	validLocation('country');
 	zipcode('zip');
 	if(checkOnSubmit===false)
 	{

@@ -200,11 +200,20 @@ label
 #wishes
 {
 	border:2px solid red;
+	position:fixed;
+	margin-bottom:0px;
+	color:white;
+	float:right;
 }
 #message{
 margin-left:72%;
 }
-
+input[type=text]
+{
+	size:50;
+	font-size:25px;
+	color:black;
+}
 
 
 ::-webkit-input-placeholder {
