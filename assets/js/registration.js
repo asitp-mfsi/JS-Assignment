@@ -41,7 +41,12 @@ function check(obj)
  ele.style.backgroundColor="lighyellow";
  ele.style.borderWidths="5px";
  checktt(obj,reg,"");
-} 
+}
+console.log(ele.id);
+if(ele.id=='mname' && ele.value=="")
+{
+	ele.style.borderColor='white';
+}	
 }
 function checktt(obj,reg,txt)
 {
@@ -87,7 +92,8 @@ function validateEmail(obj){
  var ele=document.getElementById(obj);
  var n=ele.value;
  var reg=/(\d)\1{9}/;
- if(n == "" || reg.test(n)==true || n.length!=10)
+ var reg2=/^[0-9]*$/;
+ if(n == "" || reg.test(n)==true || n.length!=10 || reg2.test(n)==false)
 {
 	var txt="It should be a 10 digit number.";
   checkOnSubmit=false;
@@ -106,21 +112,25 @@ function optional_Phnvalidate(obj)
  var ele=document.getElementById(obj);
  var n=ele.value;
  var reg=/(\d)\1{9}/;
+ var reg2=/^[0-9]*$/;
  if(n !== "")
  {
- 	 if( reg.test(n)==true || n.length!=10)
-{
+ 	 if( reg.test(n)==true || n.length!=10 || reg2.test(n)==false)
+	{
 	var txt="It should be a 10 digit number.";
   checkOnSubmit=false;
   ele.style.borderColor="red";
   checktt(obj,reg,txt);
-}
- else
-{
+	}
+	else
+	{
   ele.style.borderColor="green";
   ele.style.borderWidths="5px";
   checktt(obj,reg,"");
-} 
+	} 
+ }
+ else{
+	 ele.style.borderColor="white";
  }
 }
  function dobvalidate()
@@ -204,8 +214,8 @@ function zipcode(obj)
 	var txt="It can't be empty.";
  var ele=document.getElementById(obj);
  var n=ele.value;
- var reg=/^[0-9\-]*[0-9]*$/;
- if(n == "" || reg.test(n)!=true)
+ var reg=/^[0-9]+$/;
+ if(n == "" || reg.test(n)!=true || n.length>7 || n==0)
 { 
   checkOnSubmit=false;
   ele.style.borderColor="red";
@@ -220,9 +230,9 @@ function zipcode(obj)
 }
 function checkadd(obj)
 {
-	var txt="It can't be empty.";
+	var txt="It can't be empty and should start with a alphabet or integer and should not contain special character except [ / , . \ : ; - ]";
  var ele=document.getElementById(obj);
- var reg=/^([A-Za-z0-9])*([A-Za-z0-9\s\_\-\,\/])*$/;
+ var reg=/^([A-Za-z0-9])*([A-Za-z0-9\s\_\-\,\/\:\;])*$/;
  var n=ele.value;
  if(n == "" || reg.test(n)!=true)
 { 
@@ -282,9 +292,15 @@ function generate()
   {
 	 var getans=document.getElementById("ans").value;
 	 if(eval(str) == getans)
-		 alert("Successful");
+	 {
+		 alert("Captcha (Successful : Correct answer)");
+		 return true;
+	 }
 	 else
-		 alert("Unsuccessful");
+	 {
+		 alert("Captcha (Unsuccessful : Incorrect Answer)");
+		 return false;
+	 }
  }
 
  function startTime(){
@@ -356,6 +372,7 @@ function validateGender()
 }
 function validForm()
 {
+	checkOnSubmit=true;
 	check('fname');
 	check('mname');
 	check('lname');
@@ -373,8 +390,12 @@ function validForm()
 	if(checkOnSubmit===false)
 	{
 		alert("Registration Incomplete!!");
+		validCaptcha();
 		return false;
 	}
 	else
-		validCaptcha();
+	{
+		var val=validCaptcha();
+		return val;
+	}
 }
