@@ -27,11 +27,18 @@ function check(obj)
  var ele=document.getElementById(obj);
  var n=ele.value;
  var reg=/^[A-Za-z]*$/;
+ var txt;
  
- if(n == "" || reg.test(n)!=true)
+ if(n == "" || /\s/.test(n)==true )
 { 
-	var txt="It can't be empty and spaces not allowed.";
-  checkOnSubmit=false;
+	txt="It can't be empty and spaces not allowed.";
+	checkOnSubmit=false;
+  ele.style.borderColor="red";
+  checktt(obj,reg,txt);
+}
+else if(reg.test(n)!=true){
+		txt="It should only contain letters and no spaces";
+		checkOnSubmit=false;
   ele.style.borderColor="red";
   checktt(obj,reg,txt);
 }
@@ -42,10 +49,10 @@ function check(obj)
  ele.style.borderWidths="5px";
  checktt(obj,reg,"");
 }
-console.log(ele.id);
 if(ele.id=='mname' && ele.value=="")
 {
 	ele.style.borderColor='white';
+	 checktt(obj,reg,"It should only contain letters and no spaces");
 }	
 }
 function checktt(obj,reg,txt)
@@ -56,8 +63,14 @@ function checktt(obj,reg,txt)
 {
   if(reg.test(ele.value)!=false)
  {
-   
+   if(ele.id==='zip')
+   {
+		   document.getElementById(nxtid).innerHTML=txt;
+	}
+   else{
+
    document.getElementById(nxtid).innerHTML="&#10004 Correct Input";
+   }
  }
  else
  {
@@ -195,10 +208,19 @@ function validLocation(obj)
     var ele=document.getElementById(obj);
  var n=ele.value;
  var reg=/^([a-zA-Z]+|[a-zA-Z]+\s[a-zA-Z]+)$/;
+ var txt;
  
- if(n == "" || reg.test(n)!=true)
+ if(n == "" || /^\s$/g.test(n)==true)
 { 
+txt="It can't be empty and trailing spaces not allowed.";
   ele.style.borderColor="red";
+  checkOnSubmit=false;
+   checktt(obj,reg,txt);
+}
+else if(reg.test(n)!=true)
+{
+	txt="Only letters allowed and spaces allowed only between words";
+	  ele.style.borderColor="red";
   checkOnSubmit=false;
    checktt(obj,reg,txt);
 }
@@ -211,13 +233,34 @@ function validLocation(obj)
 }
 function zipcode(obj)
 {
-	var txt="It can't be empty.";
+	var txt,c=0;
  var ele=document.getElementById(obj);
  var n=ele.value;
  var reg=/^[0-9]+$/;
- if(n == "" || reg.test(n)!=true || n.length>7 || n==0)
-{ 
-  checkOnSubmit=false;
+ if(n == "")
+ {
+	 txt="It can't be empty and spaces not allowed ";
+	 c++;
+	 
+ }
+else if(reg.test(n)!=true)
+{
+	txt="It should contain only numbers ";
+	c++;
+}
+else if(n.length>7)
+{
+	txt="length should not be more than 6";
+	c++;
+}	
+else if( n==0)
+{
+	txt="It cannot contain only zeroes";
+	c++;
+}
+if(c!=0)
+{
+	  checkOnSubmit=false;
   ele.style.borderColor="red";
  checktt(obj,reg,txt);
 }
@@ -225,7 +268,7 @@ function zipcode(obj)
 {
   ele.style.borderColor="green";
   ele.style.borderWidths="5px";
-  checktt(obj,reg,"");
+  checktt(obj,reg,"&#10004 Correct Input");
 }
 }
 function checkadd(obj)
@@ -257,15 +300,13 @@ function checkadd(obj)
    }
 }function captcha()
  {
-	
-	 		var c=0;
-
+        var c=0;
 		while(c==0)
 		{
 			generate();
 			var a=parseInt(str[0]+str[1]);
 			var b=parseInt(str[3]+str[4]);
-			if(Number.isInteger(+(eval(str))) && a>=b && (a!=0 || b!=0))
+			if(Number.isInteger(+(eval(str))) && a>=b && (a>9 && b>9))
 			{
 				document.getElementById("captcha").innerHTML=str;
 				c++;
@@ -278,7 +319,7 @@ function checkadd(obj)
 function generate()
 {
 	var a=rand();
-	var possible="+-*/"
+	var possible="+-*/";
 	var d=possible.charAt(Math.floor(Math.random() * 4));
 	var b=rand();
 	if(d=='*')
@@ -293,12 +334,10 @@ function generate()
 	 var getans=document.getElementById("ans").value;
 	 if(eval(str) == getans)
 	 {
-		 alert("Captcha (Successful : Correct answer)");
-		 return true;
+         return true;
 	 }
 	 else
 	 {
-		 alert("Captcha (Unsuccessful : Incorrect Answer)");
 		 return false;
 	 }
  }
@@ -374,11 +413,9 @@ function validForm()
 {
 	checkOnSubmit=true;
 	check('fname');
-	check('mname');
 	check('lname');
 	validateEmail('email');
 	phnvalidate('lphone');
-	optional_Phnvalidate('mphone');
 	dobvalidate('dob');
 	vpassword('pass');
 	repassword('passw');
@@ -389,13 +426,28 @@ function validForm()
 	zipcode('zip');
 	if(checkOnSubmit===false)
 	{
+		
+		var val=validCaptcha();
+		if(val===true)
 		alert("Registration Incomplete!!");
-		validCaptcha();
+		else
+			alert("Registration Incomplete!! Captcha (Unsuccessful : Incorrect Answer)");
 		return false;
 	}
 	else
 	{
+		var mname=document.getElementById('mname').value;
+		var phn=document.getElementById('mphone').value;
 		var val=validCaptcha();
+		if(val===true && mname=="" && phn=="")
+		alert("Registration Complete!!");
+		else if(val===true)
+		{
+			alert("Registration Incomplete!! Captcha (Successful : Correct Answer)");
+			val=false;
+		}
+		else
+			alert("Registration Incomplete!! Captcha (Unsuccessful : Incorrect Answer)");
 		return val;
 	}
 }
