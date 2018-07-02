@@ -437,9 +437,11 @@ function validForm()
 	else
 	{
 		var mname=document.getElementById('mname').value;
+		check('mname');
 		var phn=document.getElementById('mphone').value;
+		optional_Phnvalidate('mphone');
 		var val=validCaptcha();
-		if(val===true && mname=="" && phn=="")
+		if(val===true && ((mname=="" && phn=="") || checkOnSubmit===true))
 		alert("Registration Complete!!");
 		else if(val===true)
 		{
