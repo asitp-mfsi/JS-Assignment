@@ -31,7 +31,10 @@ function check(obj)
  
  if(n == "" || /\s/.test(n)==true )
 { 
-	txt="It can't be empty and spaces not allowed.";
+	if(ele.id=='mname')
+	txt="spaces not allowed.";
+	else
+	txt="It can't be empty and spaces not allowed.";	
 	checkOnSubmit=false;
   ele.style.borderColor="red";
   checktt(obj,reg,txt);
