@@ -142,7 +142,7 @@ function optional_Phnvalidate(obj)
 	{
   ele.style.borderColor="green";
   ele.style.borderWidths="5px";
-  checktt(obj,reg,"");
+  checktt(obj,reg,"&#10004 Correct Input");
 	} 
  }
  else{
